@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat do Petshop</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+       .chat-box {
+            max-height: 400px;
+            overflow-y: auto;
+       }
+       .chat-input  {
+        width: 100%;
+       }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+    <h2 class="text-center">Chat do petshop</h2>
+    <div class="card">
+        <div class="card-body chat-box" id="chat-box">  
+            <!-- Mensagens do chat aparecerão aqui -->
+    </div>
+    <div class="card-footer">
+        <input type="text" id="user-input" class="form-control chat-input" placeholder="Digite sua mensagem...">
+        <button class="btn btn-primary mt-2" onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+</div>
+    <script>    
+        const chatBox = document.getElementaryById('chat-box');
+        const userInput = document.getElementary
+
+    function sendMessage() {
+        const userMessage = userInput.value;
+        if (userMessage.trim() !== '') {
+            addMessage('Você', userMessage);
+            getBotResponse(userMessage);
+            userInput.value = '';
+        }
+    }
+
+    function addMessage(sender, message) {
+       const messageElement = document.createElement('div');
+       messageElement.classlist.add('mb-2');
+       messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+       chatBox.appendChild(messageElement);
+       chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function getBotResponse(message) {
+        let response ='';
+        switch (message.toLowerCase()) {
+            case 'quais são os horários de funcionamento da loja?':
+                response = 'Nossa loja funciona de segunda a sexta, das 9h às 18h, e aos sábados, das 9h às 14h. Estamos fechados aos domingos e feriados.';
+                break;
+                case 'vocês oferecem serviços de pagamento aceitas?':
+                    response = 'Aceitamos pagamentos em dinheiro, cartão de crédito e débito, além de trasnferências bancárias.';
+                break;
+                case 'vocês vendem rações específicas para animais com necessidades especiais?':
+                    reponse = 'Sim, oferecemos serviço de entrega para compras acima de R$ 50,00. As entregas são feitas em até 48 horas após a confirmação do pedido.';
+                break;
+            default:
+                response = 'Desculpe, não entendi sua pergunta. Pode reformular?';
+        }
+    addMessage('Bot', response);
+    }
+   </script>
+</body>
+</html>
+</script>
+</div>
+</body>
+</html>
